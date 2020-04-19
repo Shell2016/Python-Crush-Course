@@ -19,11 +19,16 @@ class Restaurant():
         self.number_served += increment
 
 
-restaurant = Restaurant('McDonalds', 'random')
-print(restaurant.number_served)
-restaurant.number_served = 2
-print(restaurant.number_served)
-restaurant.set_number_served(10)
-print(restaurant.number_served)
-restaurant.increment_number_served(3)
-print(restaurant.number_served)
+class IceCreamStand(Restaurant):
+    def __init__(self, restaurant_name, cuisine_type):
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = ['milk', 'chocolate']
+
+    def print_flavors(self):
+        for flavor in self.flavors:
+            print(flavor)
+
+
+rest1 = IceCreamStand('Iccy', 'ice-cream')
+rest1.open_restaurant()
+rest1.print_flavors()
