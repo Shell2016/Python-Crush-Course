@@ -20,16 +20,21 @@ class User():
         self.login_attempts = 0
 
 
-class Admin(User):
-    def __init__(self, first_name, last_name, age):
-        super().__init__(first_name, last_name, age)
-        self.privileges = ['Разрешено редактировать сообщения',
-                           'Разрешено удалять пользователей']
+class Privileges():
+    def __init__(self):
+        self.privileges = ['Разрешено редактировать сообщения', 'Разрешено удалять пользователей',
+                           'Разрешено удалять сообщения', 'Разрешено банить пользователей']
 
     def show_privileges(self):
         print('Список привилегий админа:')
         for privilege in self.privileges:
             print('  - ' + privilege)
+
+
+class Admin(User):
+    def __init__(self, first_name, last_name, age):
+        super().__init__(first_name, last_name, age)
+        self.privileges_inst = Privileges()
 
 
 user1 = User('Михаил', 'Шелудяков', 38)
@@ -43,4 +48,4 @@ user1.reset_login_attempts()
 print(user1.login_attempts)
 user2 = Admin('Ivan', 'Ivanov', 99)
 user2.desctribe_user()
-user2.show_privileges()
+user2.privileges_inst.show_privileges()
