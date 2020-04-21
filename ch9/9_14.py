@@ -1,8 +1,8 @@
-from random import choice
+import random
 
 lottery_characters = list(range(10))
 lottery_characters += ['A', 'B', 'C', 'D', 'E']
-win_combination = []
+# win_combination = random.choices(lottery_characters, k=4)
 
 # print(f'Билет содержащий эту комбинацию является выигрышным:')
 # for i in win_combination:
@@ -14,12 +14,7 @@ count = 0
 
 while True:
     count += 1
-    temp_list = lottery_characters[:]
-    win_combination.clear()
-    for i in range(4):
-        lucky_character = choice(temp_list)
-        win_combination.append(lucky_character)
-        temp_list.remove(lucky_character)
+    win_combination = random.choices(lottery_characters, k=4)
     if win_combination == my_ticket:
         print(f'{count} iterations for matching your ticket')
         break
